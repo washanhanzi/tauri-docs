@@ -414,7 +414,7 @@ tauri-plugin-global-shortcut = "2"
 ```rust
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_global_shortcut::init())
+        .plugin(tauri_plugin_global_shortcut::Builder::default().build())
 }
 ```
 
@@ -441,7 +441,7 @@ await register('CommandOrControl+Shift+C', () => {
 use tauri_plugin_global_shortcut::GlobalShortcutExt;
 
 tauri::Builder::default()
-    .plugin(tauri_plugin_shortcut::init())
+    .plugin(tauri_plugin_global_shortcut::Builder::default().build())
     .setup(|app| {
         app.global_shortcut().register("CmdOrCtrl+Y")?;
         Ok(())
